@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Results</h1>
+
+<ul>
+{% for title in titles %}
+    <li>{{ title.title_english }}</li>
+    <img src="{{title.images.jpg.image_url}}">
+{% endfor %}
+</ul>
+
+{% endblock %}
