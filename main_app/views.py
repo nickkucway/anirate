@@ -24,8 +24,8 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-def results(request, anime_search):
-    anime_search = anime_search
+def results(request):
+    anime_search=request.GET.get('anime_search', '')
     api_url = f'https://api.jikan.moe/v4/anime?q={anime_search}&sfw'
     response = requests.get(api_url)
     data = response.json()

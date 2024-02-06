@@ -6,6 +6,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('accounts/signup/', views.signup, name='signup'),
     #path for returning anime results search
-    path('results/<str:anime_search>', views.results, name="results")
+    path('results/', views.results, name="results")
 ]
 
