@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from .models import Watchlist
 import requests
 
 def home(request):
@@ -39,3 +40,14 @@ def details(request, id):
     anime_details = response.json()['data']
     # print(data)
     return render(request, 'anime/details.html', {'anime': anime_details})
+
+def index(request):
+    animes = []
+    titles = Watchlist.objects.filter(user=request.user)
+    for title in titles:
+        api_url = f'https://api.jikan.moe/v4/anime/{title.show}/full'
+        result = requests.get(api_url)
+        result = result.json()['data']
+        animes.append(result)
+    return render(request, 'anime/index.html', {'animes': animes})
+

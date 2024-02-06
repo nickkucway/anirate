@@ -8,5 +8,6 @@ urlpatterns = [
     #path for returning anime results search
     path('results/', views.results, name="results"),
     path('details/<int:id>', views.details, name="details"),
+    path('index', views.index, name="index")
 ]
 

@@ -4,12 +4,11 @@
 <h1>Results</h1>
 
 <ul>
-    {% for title in titles %}
+    {% for title in animes %}
         <li>
             <a href="{% url 'details' title.mal_id %}">{{ title.title_english }}</a>
             <br>
             <img src="{{ title.images.jpg.image_url }}" alt="{{ title.title_english }}">
-            <p>Score: {{ title.score }}/10</p>
         </li>
     {% endfor %}
 </ul>
