@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Details</h1>
+    <h2>{{ anime.title_english }}</h2>
+    <img src="{{ anime.images.jpg.image_url }}" alt="{{ anime.title_english }}">
+    <p>{{ anime.year }}</p>
+    <p>{{ anime.title_japanese }}</p>
+
+    <p>{{ anime.synopsis }}</p>
+    <p>Episode Length:</p>
+    <p>{{ anime.episodes }}</p>
+
+{% endblock %}

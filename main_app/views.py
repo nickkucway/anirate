@@ -30,4 +30,12 @@ def results(request):
     response = requests.get(api_url)
     data = response.json()
     anime_titles = [anime for anime in data.get('data', [])]
-    return render(request, 'results.html', {'titles': anime_titles})
+    return render(request, 'anime/results.html', {'titles': anime_titles})
+
+def details(request, id):
+    api_url = f'https://api.jikan.moe/v4/anime/{id}/full'
+    response = requests.get(api_url)
+    # data = response.json()
+    anime_details = response.json()['data']
+    # print(data)
+    return render(request, 'anime/details.html', {'anime': anime_details})
