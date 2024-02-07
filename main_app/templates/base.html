@@ -27,6 +27,9 @@
             <li>
                 <a href="{% url 'about' %}">About</a>
             </li>
+            <li>
+                <a href="{% url 'index' %}">Watchlist</a>
+            </li>
             </ul>
             <ul class = "right">
                 {% if user.is_authenticated %}
