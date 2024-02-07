@@ -26,6 +26,7 @@
   </div>
 </div>
 
+<button><a href="{% url 'reviews_create' %}">Add A Review</a></button>
 {% for review in reviews %}
 <div>
   {{review.user}}

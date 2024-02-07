@@ -6,6 +6,7 @@ from .forms import WatchlistForm
 import requests
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 def home(request):
      api_url = f'https://api.jikan.moe/v4/recommendations/anime'
@@ -77,3 +78,16 @@ def add_to_watchlist (request, id):
       return redirect('index')
    print(form.errors)
    return HttpResponse('Form not valid')
+
+class ReviewCreate(CreateView):
+   model = Review
+   fields = ['rating','review_content']
+   success_url = '/'
+
+class ReviewUpdate(UpdateView):
+   model = Review
+   fields = ['rating','review_content']
+
+class ReviewDelete(DeleteView):
+   model = Review
+   success_url = '/'
