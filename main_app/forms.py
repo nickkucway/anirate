@@ -4,4 +4,4 @@ from .models import Watchlist
 class WatchlistForm(ModelForm):
     class Meta:
         model = Watchlist
-        fields =['user', 'show']
+        exclude =['user']

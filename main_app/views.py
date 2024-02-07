@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Watchlist
 from .forms import WatchlistForm
 import requests
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 def home(request):
      api_url = f'https://api.jikan.moe/v4/recommendations/anime'
@@ -49,8 +51,10 @@ def details(request, id):
     # data = response.json()
     anime_details = response.json()['data']
     # print(data)
-    return render(request, 'anime/details.html', {'anime': anime_details})
+    form = WatchlistForm()
+    return render(request, 'anime/details.html', {'anime': anime_details, 'form': form})
 
+@login_required
 def index(request):
     animes = []
     titles = Watchlist.objects.filter(user=request.user)
@@ -61,6 +65,7 @@ def index(request):
         animes.append(result)
     return render(request, 'anime/index.html', {'animes': animes})
 
+@login_required
 def add_to_watchlist (request, id):
    form = WatchlistForm(request.POST)
    if form.is_valid():
@@ -68,4 +73,6 @@ def add_to_watchlist (request, id):
       new_show.show = id
       new_show.user = request.user
       new_show.save()
-   return redirect('index')
+      return redirect('index')
+   print(form.errors)
+   return HttpResponse('Form not valid')

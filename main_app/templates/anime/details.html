@@ -1,19 +1,30 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Details</h1>
-<h2>{{ anime.title_english }}</h2>
-<img src="{{ anime.images.jpg.image_url }}" alt="{{ anime.title_english }}" />
-<p>{{ anime.year }}</p>
-<p>{{ anime.title_japanese }}</p>
 
-<p>{{ anime.synopsis }}</p>
-<p>Episode Length:</p>
-<p>{{ anime.episodes }}</p>
+<div class="col s12 m7">
+  <h2 class="header">{{ anime.title_english }}</h2>
+  <div class="card horizontal">
+    <div class="card-image">
+      <img src="{{ anime.images.jpg.image_url }}" alt="{{ anime.title_english }}" />
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <h4>{{ anime.title_japanese }}</h4>
+        <p>Year Released: {{ anime.year }}</p>
+        <p>Episode Le ``ngth: {{ anime.episodes }}</p>
+        <hr>
+        <p>{{ anime.synopsis }}</p>
+      </div>
+      <div class="card-action">
+          <form action="{% url 'add_to_watchlist' anime.mal_id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="show" value="{{anime.mal_id}}">
+            <input type="submit" class="btn red accent-4" value="Add Show">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<form action="{% url 'add_to_watchlist' anime.mal_id %}" method="POST">
-    {% csrf_token %}
-    <input type="submit" class="btn red accent-4" value="Add Show">
-  </form>
 
 {% endblock %}

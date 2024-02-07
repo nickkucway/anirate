@@ -2,33 +2,33 @@
 <!-- nav placeholder -->
 {% block content %}
 <!-- HomePageHero -->
-<!-- <section class="section home-hero">
-    <div>
-        <img src="../static/css/media/anirateicon.png" alt="">
-    </div>
-</section> -->
-
-<!--Search functionality-->
-<section class="section section-search grey">
-
+<section class="section home-hero">
   <div class="row">
-    <div class="col s12">
-        <h3>Search Anime</h3>
-        <div class="input-field col s10 offset-s1">
-            <form action="results" method="GET">
-                <input
-                  name="anime_search"
-                  class="white grey-text"
-                  placeholder="Search for shows like Naruto"
-                  type="text"
-                />
-                <input type="submit" value="Search" class="btn grey right" />
-            </form>
-        </div>
+    <div class="hero-image">
+      <img src="../static/css/media/lisabanner.png" alt="" />
     </div>
   </div>
 </section>
 
+<!--Search functionality-->
+<section class="section section-search grey">
+  <div class="row">
+    <div class="col s12">
+      <h3>Search Anime</h3>
+      <div class="input-field col s10 offset-s1">
+        <form action="results" method="GET">
+          <input
+            name="anime_search"
+            class="white grey-text"
+            placeholder="Search for shows like Naruto"
+            type="text"
+          />
+          <input type="submit" value="Search" class="btn grey right" />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Trending Section -->
 <section class="section trending">
@@ -52,7 +52,7 @@
           <img src="{{ anime2.images.jpg.image_url }}" alt="{{anime2.title}}" />
         </div>
         <div class="card-action">
-            <a href="{% url 'details' anime2.mal_id %}">{{anime2.title}}</a>
+          <a href="{% url 'details' anime2.mal_id %}">{{anime2.title}}</a>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
           <img src="{{ anime3.images.jpg.image_url }}" alt="{{anime3.title}}" />
         </div>
         <div class="card-action">
-            <a href="{% url 'details' anime3.mal_id %}">{{anime3.title}}</a>
+          <a href="{% url 'details' anime3.mal_id %}">{{anime3.title}}</a>
         </div>
       </div>
     </div>
@@ -74,7 +74,7 @@
           <img src="{{ anime4.images.jpg.image_url }}" alt="{{anime4.title}}" />
         </div>
         <div class="card-action">
-            <a href="{% url 'details' anime4.mal_id %}">{{anime4.title}}</a>
+          <a href="{% url 'details' anime4.mal_id %}">{{anime4.title}}</a>
         </div>
       </div>
     </div>
@@ -85,7 +85,7 @@
           <img src="{{ anime5.images.jpg.image_url }}" alt="{{anime5.title}}" />
         </div>
         <div class="card-action">
-            <a href="{% url 'details' anime5.mal_id %}">{{anime5.title}}</a>
+          <a href="{% url 'details' anime5.mal_id %}">{{anime5.title}}</a>
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@
           <img src="{{ anime6.images.jpg.image_url }}" alt="{{anime6.title}}" />
         </div>
         <div class="card-action">
-            <a href="{% url 'details' anime6.mal_id %}">{{anime6.title}}</a>
+          <a href="{% url 'details' anime6.mal_id %}">{{anime6.title}}</a>
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>My Watchlist</h1>
+<h1 class="center-align">My Watchlist</h1>
 
-<ul>
+<ul class ='row'>
     {% for title in animes %}
-        <li>
+        <li class = 'col s4'>
             <a href="{% url 'details' title.mal_id %}">{{ title.title_english }}</a>
             <br>
             <img src="{{ title.images.jpg.image_url }}" alt="{{ title.title_english }}">

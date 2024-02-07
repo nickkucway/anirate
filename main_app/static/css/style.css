@@ -11,3 +11,7 @@ body {
   .card-action{
     height: 150px;
   }
+
+  .hero-image img{
+    width: 100%
+  }
