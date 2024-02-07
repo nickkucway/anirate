@@ -5,7 +5,13 @@ from .models import Watchlist
 import requests
 
 def home(request):
-    return render(request, 'home.html')
+     api_url = f'https://api.jikan.moe/v4/recommendations/anime'
+     response = requests.get(api_url)
+     data = response.json()['data']
+     anime1 = data[0]['entry'][1]
+     anime2 = data[1]['entry'][1]
+     anime3 = data[2]['entry'][1]
+     return render(request, 'home.html',{'anime1': anime1, 'anime2': anime2, 'anime3': anime3})
 
 def about(request):
     return render(request, 'about.html')

@@ -2,20 +2,56 @@
 <!-- nav placeholder -->
 {% block content %}
 <!-- HomePageHero -->
-<section class="section home-hero">
+<!-- <section class="section home-hero">
     <div>
-        home page: some function goes here
-        <p>Search by title</p>
-        <form action="results" method="GET">
-            <input name="anime_search">
-            <input type="submit" value="Submit" class="btn">
-        </form>
+        <img src="../static/css/media/anirateicon.png" alt="">
     </div>
+</section> -->
+<!--Search functionality-->
+<section class="section section-search grey darken-1 white-text center">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h3>Search Animes</h3>
+        <div class="input-field">
+          <input
+            class="white grey-text"
+            placeholder="Search for shows like Naruto"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class=" section trending">
-<h2>Trending Anime</h2>
-<div>place holder image1</div>
-<div>place holder image2</div>
-<div>place holder image3</div>
+
+<!-- Trending Section -->
+<!-- <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/sample-1.jpg">
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<section class="section trending">
+  <h2>Trending Anime</h2>
+  <ul>
+    <li>{{anime1.title}}</li>
+    <li><img src="{{ anime1.images.jpg.image_url }}" alt="{{anime1.title}}"></li>
+  </ul>
+  <!-- <div>place holder image1</div>
+  <div>place holder image2</div>
+  <div>place holder image3</div> -->
 </section>
 {% endblock %}
