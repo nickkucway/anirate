@@ -3,9 +3,9 @@
 
 <h1>Results</h1>
 
-<ul>
+<ul class ='row'>
     {% for title in titles %}
-        <li>
+        <li class = 'card col s4'>
             <a href="{% url 'details' title.mal_id %}">{{ title.title_english }}</a>
             <br>
             <img src="{{ title.images.jpg.image_url }}" alt="{{ title.title_english }}">
@@ -13,5 +13,6 @@
         </li>
     {% endfor %}
 </ul>
+
 
 {% endblock %}

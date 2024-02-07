@@ -7,51 +7,100 @@
         <img src="../static/css/media/anirateicon.png" alt="">
     </div>
 </section> -->
+
 <!--Search functionality-->
-<section class="section section-search grey darken-1 white-text center">
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <h3>Search Animes</h3>
-        <div class="input-field">
-          <input
-            class="white grey-text"
-            placeholder="Search for shows like Naruto"
-            type="text"
-          />
+<section class="section section-search grey">
+
+  <div class="row">
+    <div class="col s12">
+        <h3>Search Anime</h3>
+        <div class="input-field col s10 offset-s1">
+            <form action="results" method="GET">
+                <input
+                  name="anime_search"
+                  class="white grey-text"
+                  placeholder="Search for shows like Naruto"
+                  type="text"
+                />
+                <input type="submit" value="Search" class="btn grey right" />
+            </form>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Trending Section -->
+<section class="section trending">
+  <h3>Trending Anime</h3>
+  <div class="row">
+    <!-- card 1 -->
+    <div class="col s2">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{ anime1.images.jpg.image_url }}" alt="{{anime1.title}}" />
+        </div>
+        <div class="card-action">
+          <a href="#">{{anime1.title}}</a>
+        </div>
+      </div>
+    </div>
+    <!-- card 2 -->
+    <div class="col s2">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{ anime2.images.jpg.image_url }}" alt="{{anime2.title}}" />
+        </div>
+        <div class="card-action">
+          <a href="#">{{anime2.title}}</a>
+        </div>
+      </div>
+    </div>
+    <!-- card 3 -->
+    <div class="col s2">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{ anime3.images.jpg.image_url }}" alt="{{anime3.title}}" />
+        </div>
+        <div class="card-action">
+          <a href="#">{{anime3.title}}</a>
+        </div>
+      </div>
+    </div>
+    <!-- card 4 -->
+    <div class="col s2">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{ anime4.images.jpg.image_url }}" alt="{{anime4.title}}" />
+        </div>
+        <div class="card-action">
+          <a href="#">{{anime4.title}}</a>
+        </div>
+      </div>
+    </div>
+    <!-- card 5-->
+    <div class="col s2">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{ anime5.images.jpg.image_url }}" alt="{{anime5.title}}" />
+        </div>
+        <div class="card-action">
+          <a href="#">{{anime5.title}}</a>
+        </div>
+      </div>
+    </div>
+    <!-- card 6-->
+    <div class="col s2">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{ anime6.images.jpg.image_url }}" alt="{{anime6.title}}" />
+        </div>
+        <div class="card-action">
+          <a href="#">{{anime6.title}}</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Trending Section -->
-<!-- <div class="row">
-    <div class="col s12 m7">
-      <div class="card">
-        <div class="card-image">
-          <img src="images/sample-1.jpg">
-          <span class="card-title">Card Title</span>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-<section class="section trending">
-  <h2>Trending Anime</h2>
-  <ul>
-    <li>{{anime1.title}}</li>
-    <li><img src="{{ anime1.images.jpg.image_url }}" alt="{{anime1.title}}"></li>
-  </ul>
-  <!-- <div>place holder image1</div>
-  <div>place holder image2</div>
-  <div>place holder image3</div> -->
-</section>
 {% endblock %}
