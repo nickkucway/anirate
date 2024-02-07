@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Watchlist
+from .models import Watchlist, Review
 from .forms import WatchlistForm
 import requests
 from django.contrib.auth.decorators import login_required
@@ -48,11 +48,12 @@ def results(request):
 def details(request, id):
     api_url = f'https://api.jikan.moe/v4/anime/{id}/full'
     response = requests.get(api_url)
-    # data = response.json()
     anime_details = response.json()['data']
-    # print(data)
     form = WatchlistForm()
-    return render(request, 'anime/details.html', {'anime': anime_details, 'form': form})
+    
+    reviews = Review.objects.filter(show =int(id))
+    print(reviews)
+    return render(request, 'anime/details.html', {'anime': anime_details, 'form': form, 'reviews': reviews})
 
 @login_required
 def index(request):

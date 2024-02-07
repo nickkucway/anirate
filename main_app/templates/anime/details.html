@@ -11,7 +11,7 @@
       <div class="card-content">
         <h4>{{ anime.title_japanese }}</h4>
         <p>Year Released: {{ anime.year }}</p>
-        <p>Episode Le ``ngth: {{ anime.episodes }}</p>
+        <p>Episode Length: {{ anime.episodes }}</p>
         <hr>
         <p>{{ anime.synopsis }}</p>
       </div>
@@ -25,6 +25,14 @@
     </div>
   </div>
 </div>
+
+{% for review in reviews %}
+<div>
+  {{review.user}}
+  {{review.rating}}
+  {{review.review_content}}
+</div>
+{% endfor %}
 
 
 {% endblock %}
