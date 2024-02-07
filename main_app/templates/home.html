@@ -41,7 +41,7 @@
           <img src="{{ anime1.images.jpg.image_url }}" alt="{{anime1.title}}" />
         </div>
         <div class="card-action">
-          <a href="#">{{anime1.title}}</a>
+          <a href="{% url 'details' anime1.mal_id %}">{{anime1.title}}</a>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
           <img src="{{ anime2.images.jpg.image_url }}" alt="{{anime2.title}}" />
         </div>
         <div class="card-action">
-          <a href="#">{{anime2.title}}</a>
+            <a href="{% url 'details' anime2.mal_id %}">{{anime2.title}}</a>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
           <img src="{{ anime3.images.jpg.image_url }}" alt="{{anime3.title}}" />
         </div>
         <div class="card-action">
-          <a href="#">{{anime3.title}}</a>
+            <a href="{% url 'details' anime3.mal_id %}">{{anime3.title}}</a>
         </div>
       </div>
     </div>
@@ -74,7 +74,7 @@
           <img src="{{ anime4.images.jpg.image_url }}" alt="{{anime4.title}}" />
         </div>
         <div class="card-action">
-          <a href="#">{{anime4.title}}</a>
+            <a href="{% url 'details' anime4.mal_id %}">{{anime4.title}}</a>
         </div>
       </div>
     </div>
@@ -85,7 +85,7 @@
           <img src="{{ anime5.images.jpg.image_url }}" alt="{{anime5.title}}" />
         </div>
         <div class="card-action">
-          <a href="#">{{anime5.title}}</a>
+            <a href="{% url 'details' anime5.mal_id %}">{{anime5.title}}</a>
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@
           <img src="{{ anime6.images.jpg.image_url }}" alt="{{anime6.title}}" />
         </div>
         <div class="card-action">
-          <a href="#">{{anime6.title}}</a>
+            <a href="{% url 'details' anime6.mal_id %}">{{anime6.title}}</a>
         </div>
       </div>
     </div>
