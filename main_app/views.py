@@ -81,8 +81,13 @@ def add_to_watchlist (request, id):
 
 class ReviewCreate(CreateView):
    model = Review
-   fields = ['rating','review_content']
-   success_url = '/'
+   fields = ['rating', 'review_content', 'show']
+   
+   def form_valid(self, form):
+        # self.request.user is the logged in user 
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+  
 
 class ReviewUpdate(UpdateView):
    model = Review
