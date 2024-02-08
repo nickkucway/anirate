@@ -11,19 +11,25 @@
 </section>
 
 <!--Search functionality-->
-<section class="search section section-search">
+<section class=" section-search blue accent-2">
   <div class="row">
     <div class="col s12">
-      <h3>Search Anime</h3>
+      <h4 class="center-align white-text">Discover Your Next Anime</h4>
       <div class="input-field col s10 offset-s1">
         <form action="results" method="GET">
           <input
             name="anime_search"
-            class="white grey-text"
-            placeholder="Search for shows like Naruto"
+            class="white"
+            placeholder="Search Ani-Rate"
             type="text"
           />
-          <input type="submit" value="Search" class="btn grey right" />
+          <button
+            type="submit"
+            value="Search"
+            class="submit btn red lighten-3 right waves-effect waves-light"
+          >
+            Search
+          </button>
         </form>
       </div>
     </div>
@@ -31,8 +37,8 @@
 </section>
 
 <!-- Trending Section -->
-<section class="section trending">
-  <h3>Trending Anime</h3>
+<section class="section trending blue accent-2">
+  <h3 class = 'white-text center-align'>Trending Anime</h3>
   <div class="row">
     <!-- card 1 -->
     <div class="col s2">
@@ -40,9 +46,9 @@
         <div class="card-image">
           <img src="{{ anime1.images.jpg.image_url }}" alt="{{anime1.title}}" />
         </div>
-        <div class="card-action">
+        <!-- <div class="card-action">
           <a href="{% url 'details' anime1.mal_id %}">{{anime1.title}}</a>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- card 2 -->
@@ -51,9 +57,9 @@
         <div class="card-image">
           <img src="{{ anime2.images.jpg.image_url }}" alt="{{anime2.title}}" />
         </div>
-        <div class="card-action">
+        <!-- <div class="card-action">
           <a href="{% url 'details' anime2.mal_id %}">{{anime2.title}}</a>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- card 3 -->
@@ -62,9 +68,9 @@
         <div class="card-image">
           <img src="{{ anime3.images.jpg.image_url }}" alt="{{anime3.title}}" />
         </div>
-        <div class="card-action">
+        <!-- <div class="card-action">
           <a href="{% url 'details' anime3.mal_id %}">{{anime3.title}}</a>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- card 4 -->
@@ -73,9 +79,9 @@
         <div class="card-image">
           <img src="{{ anime4.images.jpg.image_url }}" alt="{{anime4.title}}" />
         </div>
-        <div class="card-action">
+        <!-- <div class="card-action">
           <a href="{% url 'details' anime4.mal_id %}">{{anime4.title}}</a>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- card 5-->
@@ -84,9 +90,9 @@
         <div class="card-image">
           <img src="{{ anime5.images.jpg.image_url }}" alt="{{anime5.title}}" />
         </div>
-        <div class="card-action">
+        <!-- <div class="card-action">
           <a href="{% url 'details' anime5.mal_id %}">{{anime5.title}}</a>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- card 6-->
@@ -95,9 +101,9 @@
         <div class="card-image">
           <img src="{{ anime6.images.jpg.image_url }}" alt="{{anime6.title}}" />
         </div>
-        <div class="card-action">
+        <!-- <div class="card-action">
           <a href="{% url 'details' anime6.mal_id %}">{{anime6.title}}</a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
