@@ -12,7 +12,7 @@ class Review(models.Model):
     show = models.IntegerField(default=0)
 
     def get_absolute_url(self):
-        return reverse('details', kwargs={'id': self})
+        return reverse('details', kwargs={'id': self.show})
 
 class Watchlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

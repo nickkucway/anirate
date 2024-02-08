@@ -53,7 +53,7 @@ def details(request, id):
     form = WatchlistForm()
     
     reviews = Review.objects.filter(show =int(id))
-    print(reviews)
+    
     return render(request, 'anime/details.html', {'anime': anime_details, 'form': form, 'reviews': reviews})
 
 @login_required
