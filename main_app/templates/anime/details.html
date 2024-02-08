@@ -26,7 +26,8 @@
   </div>
 </div>
 
-<button><a href="{% url 'reviews_create' %}">Add A Review</a></button>
+<button><a href="{% url 'reviews_create' %}?show={{ anime.mal_id }}">Add A Review</a></button>
+
 {% for review in reviews %}
 <div>
   <p>Username:</p>
@@ -36,6 +37,8 @@
   {{review.rating}}
   <br>
   {{review.review_content}}
+  <a href="{% url 'reviews_update' review.id %}">Edit</a>
+  <a href="{% url 'reviews_delete' review.id %}">Delete</a>
 </div>
 {% endfor %}
 

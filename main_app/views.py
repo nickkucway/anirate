@@ -7,6 +7,8 @@ import requests
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.views.generic import CreateView, UpdateView, DeleteView
+from django.urls import reverse
+
 
 def home(request):
      api_url = f'https://api.jikan.moe/v4/recommendations/anime'
@@ -80,13 +82,25 @@ def add_to_watchlist (request, id):
    return HttpResponse('Form not valid')
 
 class ReviewCreate(CreateView):
-   model = Review
-   fields = ['rating', 'review_content', 'show']
+  model = Review
+  fields = ['rating', 'review_content', 'show']
    
-   def form_valid(self, form):
-        # self.request.user is the logged in user 
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+
+  def get_initial(self):
+        initial = super().get_initial()
+        # Get the `show` query parameter to pre-fill the form
+        initial['show'] = self.request.GET.get('show', '')
+        return initial
+
+  def form_valid(self, form):
+      # self.request.user is the logged in user 
+      form.instance.user = self.request.user
+      return super().form_valid(form)
+  # def form_valid(self, form):
+  #     form.instance.user = self.request.user
+  #     # Optionally, you might want to redirect to the show's details page after the review is created
+  #     self.success_url = reverse('details', kwargs={'id': form.instance.show})
+  #     return super().form_valid(form)
   
 
 class ReviewUpdate(UpdateView):
