@@ -7,7 +7,7 @@ import requests
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.views.generic import CreateView, UpdateView, DeleteView
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 
 def home(request):
@@ -85,7 +85,6 @@ class ReviewCreate(CreateView):
   model = Review
   fields = ['rating', 'review_content', 'show']
    
-
   def get_initial(self):
         initial = super().get_initial()
         # Get the `show` query parameter to pre-fill the form
@@ -96,12 +95,6 @@ class ReviewCreate(CreateView):
       # self.request.user is the logged in user 
       form.instance.user = self.request.user
       return super().form_valid(form)
-  # def form_valid(self, form):
-  #     form.instance.user = self.request.user
-  #     # Optionally, you might want to redirect to the show's details page after the review is created
-  #     self.success_url = reverse('details', kwargs={'id': form.instance.show})
-  #     return super().form_valid(form)
-  
 
 class ReviewUpdate(UpdateView):
    model = Review
@@ -109,4 +102,8 @@ class ReviewUpdate(UpdateView):
 
 class ReviewDelete(DeleteView):
    model = Review
-   success_url = '/'
+  
+   def get_success_url(self):
+    review = self.object
+    show_id = review.show
+    return reverse_lazy('details', kwargs={'id': show_id})
