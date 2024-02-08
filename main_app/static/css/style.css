@@ -1,22 +1,25 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background-color: #fff8e1;
-  }
-  ul{
-    display: flex;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #fff8e1;
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .card-action{
-    height: 150px;
-  }
+.card-action {
+  height: 150px;
+}
 
-  .hero-image img{
-    width: 100%
-  }
+.hero-image img {
+  width: 100%;
+}
 
+.card-image img {
+  height: 100%;
+}
 
 /* .search{
   background-image: url('./media/lisabanner.png');
@@ -26,4 +29,3 @@ body {
   min-height: 45vh;
   color: white
 } */
-

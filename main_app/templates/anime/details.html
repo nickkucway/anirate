@@ -1,46 +1,56 @@
 {% extends 'base.html' %} {% block content %}
 
-
-<div class="col s12 m7">
-  <h2 class="header">{{ anime.title_english }}</h2>
+<div class="section col s12 m7">
   <div class="card horizontal">
     <div class="card-image">
-      <img src="{{ anime.images.jpg.image_url }}" alt="{{ anime.title_english }}" />
+      <img
+        src="{{ anime.images.jpg.image_url }}"
+        alt="{{ anime.title_english }}"
+      />
     </div>
     <div class="card-stacked">
-      <div class="card-content">
+      <div class="card-content blue accent-2">
+        <h4 class="header white-text">{{ anime.title_english }}</h4>
         <h4>{{ anime.title_japanese }}</h4>
         <p>Year Released: {{ anime.year }}</p>
         <p>Episode Length: {{ anime.episodes }}</p>
-        <hr>
+        <hr />
         <p>{{ anime.synopsis }}</p>
+
+        <form action="{% url 'add_to_watchlist' anime.mal_id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="show" value="{{anime.mal_id}}" />
+          <button
+            type="submit"
+            value="Search"
+            class="submit btn red lighten-3 right waves-effect waves-light"
+          >
+            Add Show
+          </button>
+        </form>
       </div>
-      <div class="card-action">
-          <form action="{% url 'add_to_watchlist' anime.mal_id %}" method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="show" value="{{anime.mal_id}}">
-            <input type="submit" class="btn red accent-4" value="Add Show">
-          </form>
-      </div>
+      <!-- <div class="card-action ">
+       
+      </div> -->
     </div>
   </div>
 </div>
 
-<button><a href="{% url 'reviews_create' %}?show={{ anime.mal_id }}">Add A Review</a></button>
+<!-- Reviews -->
+<button>
+  <a href="{% url 'reviews_create' %}?show={{ anime.mal_id }}">Add A Review</a>
+</button>
 
 {% for review in reviews %}
 <div>
   <p>Username:</p>
   {{review.user}}
-  <br>
+  <br />
   <p>Score:</p>
   {{review.rating}}
-  <br>
+  <br />
   {{review.review_content}}
   <a href="{% url 'reviews_update' review.id %}">Edit</a>
   <a href="{% url 'reviews_delete' review.id %}">Delete</a>
 </div>
-{% endfor %}
-
-
-{% endblock %}
+{% endfor %} {% endblock %}
