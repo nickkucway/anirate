@@ -35,7 +35,7 @@
                 {% if user.is_authenticated %}
                 <li>
                   <form method="POST" action="{% url 'logout' %}" class="white">
-                    {% csrf_token %} {{ form.as_p }}
+                    {% csrf_token %} 
                     <input type="hidden" name="next" value="{{ next }}" />
                     <button
                       type="submit"
