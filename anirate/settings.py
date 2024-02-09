@@ -17,15 +17,14 @@ import django_on_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+SECRET_KEY = 'django-insecure-rvumcicz^+ovy#m(ha=qkkit&%hd)7c0f#i!$-@@=511xy*93&'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SERCRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ['MODE'] == 'dev' else False
+DEBUG = True #if os.environ['MODE'] == 'dev' else False
 
 ALLOWED_HOSTS = []
 
@@ -79,11 +78,19 @@ WSGI_APPLICATION = 'anirate.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'neondb',
-        'USER':'vazquezeduardo1278',
-        'PASSWORD':os.environ['DB_PASSWORD'],
-        'HOST':'ep-proud-base-a6kh19hd.us-west-2.aws.neon.tech',
+        'NAME': 'anirate',
+        'USER':'raz',
         'PORT':'5432',
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        },
     }
 }
 

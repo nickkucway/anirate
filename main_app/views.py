@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
+from django.core.cache import cache
+
 
 
 def home(request):
@@ -63,11 +65,29 @@ def index(request):
     animes = []
     titles = Watchlist.objects.filter(user=request.user)
     for title in titles:
-        api_url = f'https://api.jikan.moe/v4/anime/{title.show}/full'
-        result = requests.get(api_url)
-        result = result.json()['data']
-        animes.append(result)
+        # Construct a unique cache key for each anime
+        cache_key = f'anime_details_{title.show}'
+        anime_details = cache.get(cache_key)
+
+        if not anime_details:
+            # Data not found in cache, make the API request
+            response = requests.get(f'https://api.jikan.moe/v4/anime/{title.show}/full')
+            anime_details = response.json().get('data')
+            # Store the result in the cache for 1 hour (3600 seconds)
+            cache.set(cache_key, anime_details, 3600)
+
+        animes.append(anime_details)
+
     return render(request, 'anime/index.html', {'animes': animes})
+# def index(request):
+#     animes = []
+#     titles = Watchlist.objects.filter(user=request.user)
+#     for title in titles:
+#         api_url = f'https://api.jikan.moe/v4/anime/{title.show}/full'
+#         result = requests.get(api_url)
+#         result = result.json()['data']
+#         animes.append(result)
+#     return render(request, 'anime/index.html', {'animes': animes})
 
 @login_required
 def add_to_watchlist (request, id):
