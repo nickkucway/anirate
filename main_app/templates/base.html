@@ -33,7 +33,18 @@
             </ul>
             <ul class = "red lighten-3 right">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                <li>
+                  <form method="POST" action="{% url 'logout' %}" class="white">
+                    {% csrf_token %} {{ form.as_p }}
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    <button
+                      type="submit"
+                      value="Search"
+                      class="submit btn red lighten-3 right waves-effect waves-light">
+                      Log Out
+                    </button>
+                  </form>
+                </li>
                 {% else %}
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
                 <li><a href="{% url 'login' %}">Log In</a></li>
@@ -64,7 +75,7 @@
             </ul>
             <ul class = "red lighten-3 right">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Log Out</a></li>
+
                 {% else %}
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
                 <li><a href="{% url 'login' %}">Log In</a></li>
