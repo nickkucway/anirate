@@ -20,6 +20,8 @@
         <form action="{% url 'add_to_watchlist' anime.mal_id %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="show" value="{{anime.mal_id}}" />
+          <input type="hidden" name="title" value="{{anime.title_english}}" />
+          <input type="hidden" name="image" value="{{anime.images.jpg.image_url}}" />
           <button
             type="submit"
             value="Search"

@@ -58,16 +58,21 @@ def details(request, id):
     
     return render(request, 'anime/details.html', {'anime': anime_details, 'form': form, 'reviews': reviews})
 
+# @login_required
+# def index(request):
+#     animes = []
+#     titles = Watchlist.objects.filter(user=request.user)
+#     for title in titles:
+#         api_url = f'https://api.jikan.moe/v4/anime/{title.show}/full'
+#         result = requests.get(api_url)
+#         result = result.json()['data']
+#         animes.append(result)
+#     return render(request, 'anime/index.html', {'animes': animes})
+
 @login_required
 def index(request):
-    animes = []
-    titles = Watchlist.objects.filter(user=request.user)
-    for title in titles:
-        api_url = f'https://api.jikan.moe/v4/anime/{title.show}/full'
-        result = requests.get(api_url)
-        result = result.json()['data']
-        animes.append(result)
-    return render(request, 'anime/index.html', {'animes': animes})
+    watchlist = Watchlist.objects.filter(user=request.user)
+    return render(request, 'anime/index.html', {'watchlist': watchlist})
 
 @login_required
 def add_to_watchlist (request, id):

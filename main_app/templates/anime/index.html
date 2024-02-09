@@ -2,11 +2,11 @@
 {% block content %}
 
 <ul class ='row'>
-    {% for title in animes %}
+    {% for title in watchlist %}
         <li class = 'col s1 m4'>
-            <a href="{% url 'details' title.mal_id %}">{{ title.title_english }}</a>
+            <a href="{% url 'details' title.show %}">{{ title.title }}</a>
             <br>
-            <img src="{{ title.images.jpg.image_url }}" alt="{{ title.title_english }}">
+            <img src="{{ title.image }}" alt="{{ title.title }}">
         </li>
     {% endfor %}
 </ul>
