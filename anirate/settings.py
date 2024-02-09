@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import django_on_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rvumcicz^+ovy#m(ha=qkkit&%hd)7c0f#i!$-@@=511xy*93&'
+SECRET_KEY = os.environ['SERCRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ['MODE'] == 'dev' else False
 
 ALLOWED_HOSTS = []
 
@@ -77,7 +79,11 @@ WSGI_APPLICATION = 'anirate.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'anirate',
+        'NAME': 'neondb',
+        'USER':'vazquezeduardo1278',
+        'PASSWORD':os.environ['DB_PASSWORD'],
+        'HOST':'ep-proud-base-a6kh19hd.us-west-2.aws.neon.tech',
+        'PORT':'5432',
     }
 }
 
@@ -127,3 +133,6 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configure Django App for Heroku.
+django_on_heroku.settings(locals())
