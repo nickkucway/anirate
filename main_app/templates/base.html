@@ -39,7 +39,7 @@
                 <li><a href="{% url 'login' %}">Log In</a></li>
                 {% endif%}
             </ul>
-            <img src="../static/css/media/aniratelogo.png" height= '100%' class = 'brand-logo center' alt="Anirate">
+            <img src="{% static 'css/media/aniratelogo.png' %}" height= '100%' class = 'brand-logo center' alt="Anirate">
           
         </div>
       </nav>
@@ -48,6 +48,30 @@
       {% block content %}
       {% endblock %}
     </main>
-    <footer></footer>
+    <footer>
+      <nav>
+        <div class="nav-wrapper blue accent-2">
+          <ul class = 'left' >
+            <li>
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}">About</a>
+            </li>
+            <li>
+                <a href="{% url 'index' %}">Watchlist</a>
+            </li>
+            </ul>
+            <ul class = "red lighten-3 right">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif%}
+            </ul>
+        </div>
+      </nav>
+    </footer>
   </body>
 </html>

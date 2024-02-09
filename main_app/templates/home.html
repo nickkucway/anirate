@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 <!-- nav placeholder -->
 {% block content %}
+{% load static %}
 <!-- HomePageHero -->
 <section class="section home-hero">
   <div class="row">
     <div class="hero-image">
-      <img src="../static/css/media/lisabanner.png" alt="" />
+      <img src="{% static 'css/media/lisabanner.png' %}" alt="" />
     </div>
   </div>
 </section>

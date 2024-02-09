@@ -1,6 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
+{% load static %}
 {% block content %}
-
 <h1>About/FAQ</h1>
+<section class="section home-hero">
+  <div class="row">
+    <div class="hero-image">
+      <img
+        src="{% static 'css/media/screenshot_2024-02-07_at_6.55.36___am_720.png' %}"
+        alt=""
+      />
 
+    </div>
+  </div>
+</section>
+<section>
+  <div class="row">
+    <div class="col-2">
+      <h2>What is this?</h2>
+      <p>
+        This is a simple web application that allows you to create and manage
+        your own personal blog. You can create, edit, and delete posts, and also
+        add comments to posts.
+      </p>
+    </div>
+    <div class="col-2">
+      <h2>How do I use it?</h2>
+      <p>
+        You can create an account and log in to start creating posts. You can
+        also view and comment on other users' posts.
+      </p>
+    </div>
+  </div>
+</section>
 {% endblock %}
