@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
+
 <ul class ='row'>
     {% for title in watchlist %}
         <li class = 'col s1 m4'>
-            <a href="{% url 'details' title.show %}">{{ title.title }}</a>
-            <br>
-            <img src="{{ title.image }}" alt="{{ title.title }}">
+            <div class="card">
+                <a href="{% url 'details' title.show %}"> <img src="{{ title.image }}" alt="{{ title.title }}"></a>
+           
+            </div> 
+            <h5 class="center-align blue-text">{{ title.title }}</h5> 
         </li>
     {% endfor %}
 </ul>

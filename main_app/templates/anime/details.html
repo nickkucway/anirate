@@ -21,7 +21,11 @@
           {% csrf_token %}
           <input type="hidden" name="show" value="{{anime.mal_id}}" />
           <input type="hidden" name="title" value="{{anime.title_english}}" />
-          <input type="hidden" name="image" value="{{anime.images.jpg.image_url}}" />
+          <input
+            type="hidden"
+            name="image"
+            value="{{anime.images.jpg.image_url}}"
+          />
           <button
             type="submit"
             value="Search"
@@ -31,28 +35,65 @@
           </button>
         </form>
       </div>
-      <!-- <div class="card-action ">
-       
-      </div> -->
     </div>
   </div>
 </div>
 
 <!-- Reviews -->
-<button>
-  <a href="{% url 'reviews_create' %}?show={{ anime.mal_id }}">Add A Review</a>
+<div class="container">
+  <div class="row">
+    <button class="submit btn red lighten-3 waves-effect waves-light">
+      <a
+        class="white-text"
+        href="{% url 'reviews_create' %}?show={{ anime.mal_id }}"
+        >Add A Review</a
+      >
+    </button>
+    <div class="">
+      {% for review in reviews %}
+
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card white">
+            <div class="card-content ">
+              <button class="right red lighten-3 waves-effect waves-light btn-small">
+                <a
+                  class="white-text"
+                  href="{% url 'reviews_update' review.id %}"
+                  >Edit</a
+                >
+              </button>
+              <span class="card-title blue-text"> Username: {{review.user}}</span>
+
+              <h6 class="amber lighten-2">Score: {{review.rating}}/5</h6>
+
+              <p>{{review.review_content}}</p>
+              <!-- </ul> -->
+
+            
+              <button class=" delete right red lighten-2 waves-effect waves-light">
+                <a
+                  class="white-text"
+                  href="{% url 'reviews_delete' review.id %}"
+                  >Delete</a
+                >
+              </button>
+            </div>
+          </div>
+
+           
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!--
+<button class="submit btn red lighten-3 waves-effect waves-light  " >
+  <a class='white-text'href="{% url 'reviews_create' %}?show={{ anime.mal_id }}">Add A Review</a>
 </button>
 
-{% for review in reviews %}
-<div>
-  <p>Username:</p>
-  {{review.user}}
-  <br />
-  <p>Score:</p>
-  {{review.rating}}
-  <br />
-  {{review.review_content}}
-  <a href="{% url 'reviews_update' review.id %}">Edit</a>
-  <a href="{% url 'reviews_delete' review.id %}">Delete</a>
+  
+</div> -->
 </div>
-{% endfor %} {% endblock %}
+{% endblock %}

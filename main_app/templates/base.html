@@ -59,30 +59,35 @@
       {% block content %}
       {% endblock %}
     </main>
+
     <footer>
-      <nav>
+      <nav class="footer">
+  
         <div class="nav-wrapper blue accent-2">
-          <ul class = 'left' >
-            <li>
-                <a href="{% url 'home' %}">Home</a>
-            </li>
-            <li>
-                <a href="{% url 'about' %}">About</a>
-            </li>
-            <li>
-                <a href="{% url 'index' %}">Watchlist</a>
-            </li>
-            </ul>
             <ul class = "red lighten-3 right">
                 {% if user.is_authenticated %}
-
+                <li>
+                  <form method="POST" action="{% url 'logout' %}" class="white">
+                    {% csrf_token %} 
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    <button
+                      type="submit"
+                      value="Search"
+                      class="submit btn red lighten-3 right waves-effect waves-light">
+                      Log Out
+                    </button>
+                  </form>
+                </li>
                 {% else %}
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
                 <li><a href="{% url 'login' %}">Log In</a></li>
                 {% endif%}
             </ul>
+            <img src="{% static 'css/media/aniratelogo.png' %}" height= '100%' class = 'brand-logo center' alt="Anirate">
+          
         </div>
       </nav>
+    
     </footer>
   </body>
 </html>
