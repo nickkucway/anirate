@@ -1,44 +1,39 @@
 {% extends 'base.html' %} {% block content %}
-
-<div class="section col s12 m7">
-  <div class="card horizontal">
-    <div class="card-image">
-      <img
-        src="{{ anime.images.jpg.image_url }}"
-        alt="{{ anime.title_english }}"
-      />
-    </div>
-    <div class="card-stacked">
-      <div class="card-content blue accent-2">
-        <h4 class="header white-text">{{ anime.title_english }}</h4>
-        <h4>{{ anime.title_japanese }}</h4>
-        <p>Year Released: {{ anime.year }}</p>
-        <p>Episode Length: {{ anime.episodes }}</p>
-        <hr />
-        <p>{{ anime.synopsis }}</p>
-
-        <form action="{% url 'add_to_watchlist' anime.mal_id %}" method="POST">
-          {% csrf_token %}
-          <input type="hidden" name="show" value="{{anime.mal_id}}" />
-          <input type="hidden" name="title" value="{{anime.title_english}}" />
-          <input
-            type="hidden"
-            name="image"
-            value="{{anime.images.jpg.image_url}}"
-          />
-          <button
-            type="submit"
-            value="Search"
-            class="submit btn red lighten-3 right waves-effect waves-light"
-          >
-            Add Show
-          </button>
-        </form>
-      </div>
+<div class="row section">
+  <div class="col s12 blue accent-2 center-align">
+    <img
+    class="responsive-img"
+    src="{{ anime.images.jpg.image_url }}"
+    alt="{{ anime.title_english }}"
+  />
+  <h4 class="header white-text">{{ anime.title_english }} : </h4>
+      <h4>{{ anime.title_japanese }}</h4>
+      <p>Year Released: {{ anime.year }}</p>
+      <p>Episode Length: {{ anime.episodes }}</p>
+      <hr />
+      <p>{{ anime.synopsis }}</p>
+      <form action="{% url 'add_to_watchlist' anime.mal_id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="show" value="{{anime.mal_id}}" />
+        <input type="hidden" name="title" value="{{anime.title_english}}" />
+        <input
+          type="hidden"
+          name="image"
+          value="{{anime.images.jpg.image_url}}"
+        />
+        <button
+          type="submit"
+          value="Search"
+          class="submit btn red lighten-3 right waves-effect waves-light"
+        >
+          Add Show
+        </button>
+      </form>
     </div>
   </div>
 </div>
-
+</div>
+</div>
 <!-- Reviews -->
 <div class="container">
   <div class="row">
@@ -51,9 +46,6 @@
     </button>
     <div class="">
       {% for review in reviews %}
-
-      <div class="row">
-        <div class="col s12 m6">
           <div class="card white">
             <div class="card-content ">
               <button class="right red lighten-3 waves-effect waves-light btn-small">
@@ -64,13 +56,9 @@
                 >
               </button>
               <span class="card-title blue-text"> Username: {{review.user}}</span>
-
-              <h6 class="amber lighten-2">Score: {{review.rating}}/5</h6>
-
+              <h6 class="amber-text lighten-2">Score: {{review.rating}}/5</h6>
               <p>{{review.review_content}}</p>
               <!-- </ul> -->
-
-            
               <button class=" delete right red lighten-2 waves-effect waves-light">
                 <a
                   class="white-text"
@@ -80,20 +68,9 @@
               </button>
             </div>
           </div>
-
-           
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
-
-  <!--
-<button class="submit btn red lighten-3 waves-effect waves-light  " >
-  <a class='white-text'href="{% url 'reviews_create' %}?show={{ anime.mal_id }}">Add A Review</a>
-</button>
-
-  
-</div> -->
-</div>
 {% endblock %}
