@@ -5,10 +5,10 @@
 
 <ul class ='row'>
     {% for title in watchlist %}
-        <li class = 'col s1 m4'>
+        <li class = 'col s12 m4'>
             <div class="card">
                 <a href="{% url 'details' title.show %}"> <img src="{{ title.image }}" alt="{{ title.title }}"></a>
-           
+
             </div> 
             <h5 class="center-align blue-text">{{ title.title }}</h5> 
         </li>
