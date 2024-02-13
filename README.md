@@ -9,10 +9,10 @@ Our website presents cool feature anime shows on the home page that many people 
 - Website: https://ani-rate-1b60a817162e.herokuapp.com/
 
 ## User Stories
-As a user I want to be able to make an account.
-As a user I want to be able to discover new anime.
-As a user I want to be able to add Anime to my watchlist.
-As a user I want to be able to review anime.
+As a user I want to be able to make an account.  
+As a user I want to be able to discover new anime.  
+As a user I want to be able to add Anime to my watchlist.  
+As a user I want to be able to review anime.  
 
 ## Screenshots
 ![Screenshot 2024-02-09 at 3 09 28 PM](https://github.com/nickkucway/anirate/assets/80179931/61cbc596-0075-4141-b905-3038e8e7e802)
@@ -56,5 +56,5 @@ You can rate the anime on a scale of 1-5. 5 being 'This show is awesome!🔥' an
 One hurdle we faced was not being able to remove the show number from the form when adding a review. Updates coming soon!
 
 ## Coming Soon/ Icebox
-Implement User pages with badges.
+Implement User pages with badges.  
 Add a more robust search/ discover functionality with API.
